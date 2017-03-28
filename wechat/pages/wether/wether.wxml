@@ -1,0 +1,67 @@
+<!-- 天气实况 -->
+<view class="today-detail" wx:if="{{hasToday}}">
+    <view class="detail-area" >
+        <text class="area-today">{{city.date}}</text>
+        <text class="area-point">{{city.pname}}·{{city.name}}</text>
+         <!--<text class="change-point">[切换]</text></text>-->
+    </view>
+    <view class="detail-image">
+        <text>{{condition.condition}}</text>
+        <image src="{{condition.icon}}"></image>
+    </view>
+    <view class="detail-temp">
+        <text>{{condition.temp}}</text>
+        <text class="text align-up">℃</text>
+        <text class="text">[{{condition.updatetime}}更新]</text>
+    </view>
+    <view class="detail-tips">
+        湿度 {{condition.humidity}}％  {{condition.windDir}}{{condition.windLevel}}级 {{condition.tips}}
+    </view>
+    <view class="detail-tips">
+        日出：{{condition.sunRise}}
+    </view>
+    <view class="detail-tips">
+        日落：{{condition.sunSet}}
+    </view>
+</view>
+<view class="no-access-tips" wx:if="{{!hasToday}}">
+    <view>信息获取中...</view>
+    <view>如您未授权获取本地信息，请点击[<text bindtap="getLocation">授权</text>]重新获取获取</view>
+</view>
+
+<!-- 24小时天气预报 -->
+<view class="daily-container">
+    <view class="title">
+        24小时预报
+    </view>
+    <scroll-view scroll-x="true" class="hour-list" wx:if="{{hasTwenty}}">
+        <view class="hour-item" wx:key="item" wx:for="{{hourly}}">
+            <view class="item">{{item.hour}}时</view>
+            <view class="item">
+                <image src="{{item.icon}}"></image> 
+            </view>
+            <view class="item">{{item.temp}}℃</view>
+        </view>
+    </scroll-view>
+
+    <view class="title">
+        15天天气预报
+    </view>
+
+    <scroll-view scroll-x="true" class="days-list" wx:if="{{hasFifty}}">
+        <view class="days-tr" wx:key="item" wx:for="{{fiftyDays}}">
+            <view class="days-td">
+                {{item.predictDate}}
+            </view>
+            <view class="days-td">
+            {{item.conditionDay}} ~ {{item.conditionNight}}
+            </view>
+            <view class="days-td">
+                <image src="{{item.conditionIdDay}}"></image><text> ~ </text><image src="{{item.conditionIdNight}}"></image>
+            </view>
+            <view class="days-td">
+                {{item.tempDay}}℃ ~ {{item.tempNight}}℃
+            </view>
+        </view> 
+    </scroll-view>
+</view>

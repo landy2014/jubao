@@ -1,0 +1,115 @@
+page {
+    background: #1296db;
+}
+
+.location-info {
+    width: 96%;
+    padding: 15rpx 2%;
+    font-size: 26rpx;  
+    background: #f5f5f5;    
+}
+
+.location-info .icon-point {
+    width: 40rpx;
+    height: 40rpx;
+    vertical-align: middle;
+}
+
+.location-info .text {
+    vertical-align: middle;
+}
+
+/** 天气信息样式 **/
+.detail-wrap {
+    height: 100%;
+    font-size: 24rpx;
+}
+
+.detail-wrap .detail-today {
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 20rpx;
+}
+.detail-today .today-temp {
+    color: #1296db;
+}
+.today-temp .temp {
+    display: inline-block;
+    font-size: 150rpx;
+    line-height: 150rpx;
+    vertical-align: top;
+}
+.today-temp .weather {
+    display: inline-block;
+    font-size: 30rpx;
+    vertical-align: top;
+}
+.publish-time {
+    padding-top: 10rpx;
+    color: #333;
+}
+.today-info {
+    padding-top: 10rpx;
+    color: #333;
+}
+.today-pm {
+    padding-top: 10rpx;
+    color: #333;
+}
+
+.detail-other {
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    padding: 30rpx 0;
+    background: rgba(18, 150, 219, .4);
+    font-size: 24rpx;
+}
+ .detail-other .icon-small {
+     width: 60rpx;
+     height: 60rpx;
+ }
+/** 白天 **/
+ .detail-other .detail-day {
+    flex: 1;
+    padding: 0 10rpx;
+}
+/** 晚上 **/
+.detail-other .detail-night {
+    flex: 1;
+    padding: 0 10rpx;
+}
+
+.detail-other .weather-text {
+    font-size: 34rpx;
+}
+
+.float-left {
+    display: inline-block;
+    width: 50%;
+    height: 50rpx;
+    line-height: 50rpx;
+    /*background: red;*/
+}
+.float-right {
+    display: inline-block;
+    width: 50%;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: right;
+    /*background: yellow;*/
+}
+.float-right image {
+    vertical-align: middle;
+}
+
+.clr:after {
+    clear: both;
+}
+.clr:before, .clr:after {
+    content: '';
+    display: table;
+}

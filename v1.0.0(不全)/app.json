@@ -1,0 +1,34 @@
+{
+  "pages":[
+     "pages/wether/wether",
+    "pages/index/index",
+   
+    "pages/detail/detail"
+  ],
+  "window":{
+    "backgroundTextStyle":"bold",
+    "navigationBarBackgroundColor": "#1296db",
+    "navigationBarTitleText": "聚宝生活",
+    "navigationBarTextStyle":"#fff"
+  },
+  "tabBar": {
+    "borderStyle": "#fff",
+    "color": "#515151",
+    "selectedColor": "#1296db",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+      "pagePath": "pages/wether/wether",
+      "text": "看天气",
+      "iconPath": "images/tq_off.png",
+      "selectedIconPath": "images/tq_on.png"
+    },
+      {
+      "pagePath": "pages/index/index",
+      "text": "查快递",
+      "iconPath": "images/find_off.png",
+      "selectedIconPath": "images/find_on.png"
+    }
+    ]
+  }
+}

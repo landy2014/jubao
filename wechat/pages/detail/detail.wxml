@@ -1,0 +1,38 @@
+
+    <view class="header">
+        <view class="express-info">
+            <view class="icon" wx:if="{{expressDetail.ico}}">
+                <image class="icon-express" src="{{expressDetail.ico}}"></image>
+            </view>
+            <view class="name" wx:if="{{expressDetail.phone}}">
+            客服电话：{{expressDetail.phone}}
+            </view>
+            <view class="name">
+            {{expressDetail.company}}
+            </view>
+            <view class="name express-no" wx:if="{{expressDetail.nu}}">
+                快递单号: {{expressDetail.nu}}
+            </view>
+        </view>
+        
+    </view>
+
+    <view class="detail-container">
+    
+        <view class="detail-no-data" wx:if="{{!hasData}}">
+        {{noData}}
+        </view>
+
+        <view class="detail-list" wx:if="{{hasData}}">
+            <block wx:key="item" wx:for="{{expressDetail.data}}">
+            <view class="context">
+                {{item.context}}
+            </view>
+            <view class="time">
+                {{item.time}}
+            </view>
+            </block>
+        </view>
+
+    </view>
+        

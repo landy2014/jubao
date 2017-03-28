@@ -1,0 +1,35 @@
+
+    <view class="header">
+        <view class="express-info">
+            <view class="icon">
+                <image class="icon-express" src="{{expressIcon}}"></image>
+            </view>
+            <view>
+            {{expressDetail.company}}
+            </view>
+            <view class="express-no">
+                快递单号: {{expressNo}}
+            </view>
+        </view>
+        
+    </view>
+
+    <view class="detail-container">
+    
+        <view class="detail-no-data" wx:if="{{!hasData}}">
+        {{noData}}
+        </view>
+
+        <view class="detail-list" wx:if="{{hasData}}">
+            <block wx:key="item" wx:for="{{expressDetail.traces}}">
+            <view class="context">
+                {{item.context}}
+            </view>
+            <view class="time">
+                {{item.time}}
+            </view>
+            </block>
+        </view>
+
+    </view>
+        
