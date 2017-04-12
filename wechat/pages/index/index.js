@@ -23,6 +23,10 @@ Page({
     expressData: '',
     orderNumber: '',
     hasData: false,
+    delIcon: '../../images/commonIcon/trash.png',
+    startX: 0,
+    startY: 0,
+    isDelete: false,
     // 无内容时提示
     noDataTip: {
       imgUrl: '../../images/expressIcon/404.png',
@@ -34,6 +38,61 @@ Page({
     },
     // 缓存数据列表
     cacheList: []
+  },
+  // 删除单个缓存数据
+  deleteItem(no) {
+    console.log(no);
+  },
+  // 处理列表项触摸开始
+  handleTouchStartEvent(e) {
+    let that = this;
+    
+    that.startX = e.touches[0].pageX;
+    that.startY = e.touches[0].pageY;
+
+    console.log(that.startX, that.startY);
+
+  },
+  // 处理列表项触摸结束
+  handleTouchEndEvent(e) {
+    
+    let that = this;
+    let endX = e.changedTouches[0].pageX;
+    let endY = e.changedTouches[0].pageY;
+
+    console.log(endX, endY);
+
+    let disX = endX - that.startX;
+    let disY = endY - that.startY;
+
+    let absDisX = Math.abs(disX);
+    let absDisY = Math.abs(disY);
+
+    let tan = (absDisY / absDisX) * 100;
+
+    if (disY === 0) {
+      if (absDisX > 100) {
+        console.log('dfdf');
+        that.setData({
+          isDelete : true
+        })
+      } else {
+        let val = e.currentTarget.dataset.no;
+
+        if (!val) {
+          return;
+        }
+
+        that.jumpToDetail(val);
+      }
+    } else {
+      if (absDisX > 100 && (0 <= tan && tan <= 15) ) {
+        console.log('dfdf1111');
+        that.setData({
+          isDelete : true
+        });
+      }
+    }
   },
   // 扫描快递单
   handleScanOrder: function () {
@@ -86,7 +145,7 @@ Page({
       url: '../../pages/detail/detail?no=' + value
     });
   },
-  onLoad:  function () {
+  onLoad () {
     var that = this
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function(userInfo){
@@ -98,7 +157,7 @@ Page({
     
   },
   // 每次显示页面都更新缓存数据
-  onShow: function() {
+  onShow() {
     let that = this;
     let list = wx.getStorageInfoSync();
     let tempArr = [];
@@ -114,6 +173,13 @@ Page({
       for(let i = 0; i < len; i++) {
         tempArr.push(wx.getStorageSync(temp[i]));
       }
+
+      // 按照时间倒序
+      tempArr.sort( (a, b) => {
+        if (a.time > b.time) return -1;
+        if (a.time < b.time) return 1;
+        return 0;
+      });
 
       // 更新缓存数据
       that.setData({

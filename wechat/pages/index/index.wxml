@@ -22,17 +22,25 @@
     <view class="express-list" wx:if="{{hasData}}">
         <view class="list-title">历史记录</view>
         <block wx:key="item" wx:for="{{cacheList}}">
-        <view bindtap="handleTapShowDetail" data-no="{{item.no}}" class="list-item">
-          <view class="title">
-            <image src="{{item.detail.ico}}"></image>
-            <text>{{item.detail.company}}</text>
-            <text class="push-right" wx:if="{{item.detail.status === 6}}">已签收</text>
+        <view class="list-item {{isDelete ? 'show-delete': ''}}">
+          <view class="item-left" data-no="{{item.no}}" catchtouchstart="handleTouchStartEvent" catchtouchend="handleTouchEndEvent">
+            <view class="title">
+              <image src="{{item.detail.ico}}"></image>
+              <text>{{item.detail.company}}</text>
+              <text class="push-right" wx:if="{{item.detail.status === 6}}">已签收</text>
+            </view>
+            <view class="info">
+              <view class="number">{{item.no}}</view>
+              <view class="context">{{item.detail.data[0].time}}</view>
+              <view class="context">{{item.detail.data[0].context}}</view>
+            </view>
           </view>
-          <view class="info">
-            <view class="number">{{item.no}}</view>
-            <view class="context">{{item.detail.data[0].time}}</view>
-            <view class="context">{{item.detail.data[0].context}}</view>
+          <view class="item-right">
+            <view class="icon-wrap">
+              <image src="{{delIcon}}" bindtap="deleteItem" data-no="{{item.no}}"></image>
+            </view>
           </view>
+          <view class="delete-mark"></view>
         </view>
         </block>
     </view>
