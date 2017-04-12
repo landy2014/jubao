@@ -1,0 +1,28 @@
+{
+  "name": "jubao",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "install": "npm install --production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "compression": "^1.6.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "file-stream-rotator": "^0.1.0",
+    "helmet": "^3.5.0",
+    "md5": "^2.2.1",
+    "morgan": "^1.8.1",
+    "pm2": "^2.4.2",
+    "request": "^2.81.0",
+    "require-dir": "^0.3.1",
+    "vhost": "^3.0.2"
+  }
+}

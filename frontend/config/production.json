@@ -1,0 +1,12 @@
+{
+  "static": {
+    "domain": "localhost",
+    "http": 9091,
+    "https": 4431,
+    "useHttps": true
+  },
+  "domain": {
+    "static": "static.13css.com",
+    "www": "www.13css.com"
+  }
+}
