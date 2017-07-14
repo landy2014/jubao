@@ -14,6 +14,9 @@ const config = require('../config/production.json');
 const express = require('../api/express');
 const weather = require('../api/wether');
 const getLocationInfo = require('../api/getLocationInfo');
+const url = require('url');
+const path = require('path');
+const fs = require('fs');
 
 /**
  * 首页路由
@@ -24,6 +27,25 @@ router.get('/', function(req, res){
     'title': 'landy的个人网站',
     'styles': [parseMap('base', 'css'), parseMap('index', 'css')],
     'scripts': [parseMap('base', 'js'), parseMap('index', 'js')]
+  });
+});
+
+/*
+ * 处理微信
+ * 
+*/
+let cache = require('memory-cache');
+router.get('/wechat', (req, res) => {
+  let protocol = req.protocol || 'https';
+  let connection = req.connection;
+  let host = req.hostname || '';
+  let query = decodeURIComponent(req.url).split("#"[0]);
+  console.log(connection);
+  res.render('pages/wechat', {
+    'token': 'sdkfsdkfhlaksdhflkjasdf',
+    'key': 'sdfsdf',
+    "cache": cache,
+    "url": protocol + '://' + host + encodeURIComponent(query)
   });
 });
 

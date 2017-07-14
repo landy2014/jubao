@@ -18,11 +18,14 @@
     "express-handlebars": "^3.0.0",
     "file-stream-rotator": "^0.1.0",
     "helmet": "^3.5.0",
+    "jssha": "^2.3.1",
     "md5": "^2.2.1",
+    "memory-cache": "^0.2.0",
     "morgan": "^1.8.1",
     "pm2": "^2.4.2",
     "request": "^2.81.0",
     "require-dir": "^0.3.1",
+    "url": "^0.11.0",
     "vhost": "^3.0.2"
   }
 }

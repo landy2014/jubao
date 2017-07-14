@@ -40,7 +40,7 @@
               <image src="{{delIcon}}" bindtap="deleteItem" data-no="{{item.no}}"></image>
             </view>
           </view>
-          <view class="delete-mark"></view>
+          <view class="delete-mark" bindtap="toggleDeleteClass"></view>
         </view>
         </block>
     </view>

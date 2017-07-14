@@ -40,8 +40,20 @@ Page({
     cacheList: []
   },
   // 删除单个缓存数据
-  deleteItem(no) {
-    console.log(no);
+  deleteItem(event) {
+    let no = event.target.dataset.no;
+    try {
+      wx.removeStorageSync(no);
+      this.updateStorage();
+    } catch(e) {
+      throw e;
+    }
+  },
+  // 切换是否删除状态
+  toggleDeleteClass() {
+    this.setData({
+      isDelete: this.isDelete ? false: ''
+    })
   },
   // 处理列表项触摸开始
   handleTouchStartEvent(e) {
@@ -50,7 +62,7 @@ Page({
     that.startX = e.touches[0].pageX;
     that.startY = e.touches[0].pageY;
 
-    console.log(that.startX, that.startY);
+    // console.log(that.startX, that.startY);
 
   },
   // 处理列表项触摸结束
@@ -60,7 +72,7 @@ Page({
     let endX = e.changedTouches[0].pageX;
     let endY = e.changedTouches[0].pageY;
 
-    console.log(endX, endY);
+    // console.log(endX, endY);
 
     let disX = endX - that.startX;
     let disY = endY - that.startY;
@@ -87,7 +99,7 @@ Page({
       }
     } else {
       if (absDisX > 100 && (0 <= tan && tan <= 15) ) {
-        console.log('dfdf1111');
+        // console.log('dfdf1111');
         that.setData({
           isDelete : true
         });
@@ -156,8 +168,7 @@ Page({
     });
     
   },
-  // 每次显示页面都更新缓存数据
-  onShow() {
+  updateStorage() {
     let that = this;
     let list = wx.getStorageInfoSync();
     let tempArr = [];
@@ -191,5 +202,49 @@ Page({
         hasData: false
       });
     }
+  },
+  // 每次显示页面都更新缓存数据
+  onShow() {
+    let test = function() {
+      console.log('hi, world!');
+      wx.navigateTo({
+        url: '../detail/detail',
+      })
+    };
+      wx.showToast({
+        duration: 3000,
+        title: '请等待三秒...'
+      });
+
+      setTimeout(test, 3000);
+    
+    this.updateStorage();
+    wx.getSetting({
+      success: function(res) {
+        console.log(res, res.authSetting['scope.userInfo']);
+        if (!res.authSetting['scope.userInfo']) {
+          wx.authorize({
+            scope: 'scope.userInfo',
+            success: function (errMsg) {
+              console.log(errMsg);
+            },
+            fail: function() {
+              wx.openSetting({
+                success: function(authSetting) {
+                  console.log(authSetting);
+                },
+                fail: function() {
+
+                }
+              })
+            },
+            complete: function () {
+              console.log('complete');
+            }
+          });
+        }
+      }
+    })
+    
   }
 })

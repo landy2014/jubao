@@ -1,16 +1,12 @@
 {
-  "name": "sep",
+  "name": "jubao",
   "version": "1.0.0",
-  "description": "nodejs project for mobile",
+  "description": "nodejs project for jubao pc",
   "main": "sep.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node build/dev.js",
     "build": "node build/prod.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "http://linyandi:linyandi@src.jiaju888.com/frontend/sep.git"
   },
   "keywords": [
     "nodejs",

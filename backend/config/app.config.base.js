@@ -9,7 +9,8 @@
 let compression = require('compression');
 let bodyParser = require('body-parser');
 let cookiePaser = require('cookie-parser');
-let app = require('express')();
+let express = require('express');
+let app = express();
 let helmet = require('helmet');
 let morgan = require('morgan');
 let fs = require('fs');
@@ -21,6 +22,9 @@ let handlebars = require('express-handlebars').create({
   defaultLayout: 'main',
   extname: '.hbs'
 });
+
+// 静态资源目录
+app.use(express.static(path.join(process.cwd(), './static')));
 
 /**
  *  记录日志
@@ -85,5 +89,7 @@ app.use(bodyParser.json());
  */
 app.engine('.hbs', handlebars.engine);
 app.set('view engine', '.hbs');
+
+app.set('trust proxy', true);
 
 module.exports = app;
