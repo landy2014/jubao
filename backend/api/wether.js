@@ -63,7 +63,7 @@ function getWeatherInfoV2(opts, type, cb) {
 
   // 请求数据并返回
   request({
-    method: 'POST',
+    method: "POST",
     url: reqURL,
     headers: {
       "Authorization": authorization

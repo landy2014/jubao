@@ -13,6 +13,7 @@ const config = require('../config/production.json');
 //const md5 = require('md5');
 const express = require('../api/express');
 const weather = require('../api/wether');
+const news = require('../api/news');
 const getLocationInfo = require('../api/getLocationInfo');
 const url = require('url');
 const path = require('path');
@@ -40,7 +41,8 @@ router.get('/wechat', (req, res) => {
   let connection = req.connection;
   let host = req.hostname || '';
   let query = decodeURIComponent(req.url).split("#"[0]);
-  console.log(connection);
+  // console.log(connection);
+
   res.render('pages/wechat', {
     'token': 'sdkfsdkfhlaksdhflkjasdf',
     'key': 'sdfsdf',
@@ -125,6 +127,21 @@ router.get('/location/info', function(req, res){
   let lng = req.query.lng;
 
   getLocationInfo(lat, lng, function(result){
+    res.json(result);
+  });
+});
+
+/*
+   获取新闻信息接口
+   API提供商：天聚地合（苏州）数据股份有限公司
+   ali云市场地址：https://market.aliyun.com/products/57126001/cmapi013650.html?spm=5176.2020520132.101.1141.JjgJja#sku=yuncode765000000
+   API地址：http://toutiao-ali.juheapi.com/toutiao/index
+*/ 
+
+router.get('/news/info', function(req, res){
+  let type = req.query.type || 'top';
+  
+  news.getNewsList(type, function(result){
     res.json(result);
   });
 });

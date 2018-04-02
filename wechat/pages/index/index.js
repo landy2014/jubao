@@ -211,12 +211,12 @@ Page({
         url: '../detail/detail',
       })
     };
-      wx.showToast({
-        duration: 3000,
-        title: '请等待三秒...'
-      });
+      // wx.showToast({
+      //   duration: 3000,
+      //   title: '请等待三秒...'
+      // });
 
-      setTimeout(test, 3000);
+      // setTimeout(test, 3000);
     
     this.updateStorage();
     wx.getSetting({

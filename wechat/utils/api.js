@@ -114,11 +114,31 @@ function getWeatherFiftyDays(opts, cb) {
     })
 }
 
+// 获取新闻列表通用接口
+function getNewsList(types, cb) {
+  let reqURL = 'https://www.13css.com/news/info';
+  let type = types || 'top';
+
+  wx.request({
+    url: reqURL,
+    data: {
+      type: type
+    },
+    success: function(res) {
+      cb(res);
+    },
+    fail: function(err) {
+      cb(err);
+    }
+  })
+}
+
 module.exports = {
     getExpressInfo: getExpressInfo,
     getLocationInfo: getLocationInfo,
     getLocationCodeByName: getLocationCodeByName,
     getWeatherCondition: getWeatherCondition,
     getWeatherTwentyFourHours: getWeatherTwentyFourHours,
-    getWeatherFiftyDays: getWeatherFiftyDays
+    getWeatherFiftyDays: getWeatherFiftyDays,
+    getNewsList: getNewsList
 }

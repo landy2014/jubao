@@ -1,0 +1,11 @@
+
+<view class="container">
+
+ <block wx:key="item" wx:for="{{List}}">
+<view>
+{{item.title}}
+</view>
+<br />
+</block> 
+
+</view>

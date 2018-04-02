@@ -33,7 +33,7 @@ app.use('/', homeRouter);
 /**
  * 自定义404，500 中间件
  */
- 404
+// 404
 app.use(function(req, res){
   res.status(404).send('Page Not Found');
 });

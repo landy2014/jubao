@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/news/index",
     "pages/index/index",
     "pages/wether/wether",
     "pages/detail/detail"
@@ -17,6 +18,12 @@
     "selectedColor": "#1296db",
     "backgroundColor": "#fff",
     "list": [
+      {
+        "pagePath": "pages/news/index",
+        "text": "新闻",
+        "iconPath": "images/commonIcon/news_off.png",
+        "selectedIconPath": "images/commonIcon/news_on.png"
+      },
       {
       "pagePath": "pages/index/index",
       "text": "查快递",
