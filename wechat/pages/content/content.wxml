@@ -1,0 +1,4 @@
+
+<web-view url="{{contentURL}}">
+  test
+</web-view>

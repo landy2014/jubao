@@ -1,11 +1,9 @@
 
 <view class="container">
-
- <block wx:key="item" wx:for="{{List}}">
-<view>
-{{item.title}}
-</view>
-<br />
-</block> 
-
+  <block wx:key="item" wx:for="{{List}}">
+    <navigator url="../content/content?url={{item.url}}">
+      <view>{{item.title}}</view>
+      <view>{{item.date}}</view>
+    </navigator>
+  </block> 
 </view>

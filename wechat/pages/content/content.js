@@ -1,24 +1,18 @@
-// pages/news/index.js
-let API = require('../../utils/api.js');
-
+// pages/content/content.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    hasData: false,
-    List: [],
-    EmptyTips: '暂无数据'
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showToast({
-
-    });
+    console.log(options);
   },
 
   /**
@@ -32,18 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let that = this;
-
-    API.getNewsList('top', function (res) {
-      // console.log(JSON.parse(res.data));
-      let data = JSON.parse(res.data);
-      if (data.result.stat) {
-        that.setData({
-          hasData: true,
-          List: data.result.data
-        })
-      }
-    })
+  
   },
 
   /**

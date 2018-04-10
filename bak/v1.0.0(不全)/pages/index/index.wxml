@@ -1,0 +1,42 @@
+<!--index.wxml-->
+<view class="container">
+<view class="header">
+  <form bindsubmit="submitSearchExpress">
+    <view class="form-input">
+      <input bindconfirm="handleInputConfirm" type="text" value="{{orderNumber}}" placeholder="请输入快递单号" />
+      <image bindtap="handleScanOrder" src="{{scanImg.src}}" class="scan-button"></image>
+    </view>
+  </form>
+</view>
+
+<scroll-view class="main">
+  <view class="tip-no-data" wx:if="{{!hasData}}">
+     <view>
+      <image class="tip-404" mode="aspectFix" src="{{noDataTip.imgUrl}}"></image>
+     </view>
+     <view class="tip-text">
+      <text>{{noDataTip.text}}</text> 
+    </view>
+</view>
+
+    <view class="express-list" wx:if="{{hasData}}">
+        <view class="list-title">历史记录</view>
+        <block wx:key="item" wx:for="{{cacheList}}">
+        <view bindtap="handleTapShowDetail" data-no="{{item.no}}" class="list-item">
+          <view class="title">
+            <text>{{item.detail.company}}</text>
+            <text></text>
+          </view>
+          <view class="info">
+            <view class="number">{{item.no}}</view>
+            <view class="context">{{item.detail.traces[0].context}}</view>
+          </view>
+        </view>
+        </block>
+    </view>
+  
+
+</scroll-view>
+
+</view>
+

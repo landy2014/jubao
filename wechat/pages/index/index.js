@@ -221,7 +221,7 @@ Page({
     this.updateStorage();
     wx.getSetting({
       success: function(res) {
-        console.log(res, res.authSetting['scope.userInfo']);
+        // console.log(res, res.authSetting['scope.userInfo']);
         if (!res.authSetting['scope.userInfo']) {
           wx.authorize({
             scope: 'scope.userInfo',

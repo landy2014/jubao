@@ -1,0 +1,79 @@
+body {
+    height: 100%;
+}
+.container {
+    height: 100%;
+}
+.header {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  height: 100rpx;
+  padding: 50rpx 0 0 0;
+  background: #1296db;
+}
+
+.header .express-info {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 20rpx;
+    background: #fff;
+    text-align: center; 
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+}
+.header .express-no {
+    width: 95%;
+    padding: 10rpx 0;
+    margin: 0 auto;
+    text-align: center;
+    color: #333;
+    font-size: 26rpx;
+    border-bottom: 1rpx dashed #dfdfdf;
+}
+.header .icon .icon-express {
+    width: 80rpx;
+    height: 80rpx;
+}
+
+/** detail **/
+.detail-container {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto 20rpx auto;
+    padding-top: 250rpx;
+    padding-bottom: 10rpx;
+    border-bottom-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+    background: #fff;
+    box-shadow: -2rpx 2rpx 10rpx rgba(0,0,0,.35);
+    word-break: break-all;
+    word-wrap: break-word;
+    font-size: 32rpx;
+}
+
+.detail-container .detail-no-data {
+    padding: 12rpx;
+    font-size: 30rpx;
+    text-align: center;
+}
+
+.detail-container .detail-list {
+    padding: 0 20rpx;
+    font-size: 30rpx;
+}
+.detail-list .context {
+    padding-top: 20rpx;
+}
+.detail-list .context:first-child {
+    color: #1296db;
+}
+
+.detail-list .time {
+    padding: 10rpx 0;
+    font-size: 24rpx;
+    color: #ccc;
+}
+.detail-list .time:first-child {
+    color: #1296db;
+}
