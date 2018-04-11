@@ -1,9 +1,19 @@
 
 <view class="container">
   <block wx:key="item" wx:for="{{List}}">
-    <navigator url="../content/content?url={{item.url}}">
-      <view>{{item.title}}</view>
-      <view>{{item.date}}</view>
+    <navigator class="container__navigator" url="../content/content?url={{item.url}}">
+      <view class="navigator__title">
+        <view class="title--title">{{item.title}}</view>
+        <view class="title--infos">
+          <text class="infos--date">{{item.date}}</text>
+
+          <text class="infos--author">{{item.author_name}}</text>
+        </view>
+      </view>
+      <view class="navigator__thumbnail">
+        <image class='navigator__image' src="{{item.thumbnail_pic_s}}"></image>
+      </view>
+      
     </navigator>
   </block> 
 </view>

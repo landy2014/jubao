@@ -16,8 +16,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showToast({
-
+    wx.showLoading({
+      title: "数据获取中...",
+      mask: true
     });
   },
 
@@ -25,25 +26,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    this.FetchNewsList();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let that = this;
-
-    API.getNewsList('top', function (res) {
-      // console.log(JSON.parse(res.data));
-      let data = JSON.parse(res.data);
-      if (data.result.stat) {
-        that.setData({
-          hasData: true,
-          List: data.result.data
-        })
-      }
-    })
+    
   },
 
   /**
@@ -64,7 +54,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.FetchNewsList();
   },
 
   /**
@@ -79,5 +69,25 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  /**
+   * 获取新闻列表公用事件
+   */
+  FetchNewsList: function() {
+    let that = this;
+
+    API.getNewsList('top', function (res) {
+      let data = JSON.parse(res.data);
+      if (data.result.stat) {
+        that.setData({
+          hasData: true,
+          List: data.result.data
+        });
+      } else {
+        console.log(res);
+      }
+
+      wx.hideLoading();
+    });
   }
 })
