@@ -146,4 +146,12 @@ router.get('/news/info', function(req, res){
   });
 });
 
+/**
+ * 转发新闻详情页
+ */
+router.get('/mobile/:id', function(req, res){
+  let originURL = 'http://mini.eastday.com/mobile/' + req.params.id +'.html';
+  res.redirect(302, originURL);
+});
+
 module.exports = router;

@@ -5,28 +5,44 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    contentURL: 'https://www.13css.com/mobile/283478587'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
+    // console.log(options);
+    let requestURL = "https://www.13css.com/mobile/";
+
+    let num = options.url.match(/\d{1,}/);
+    
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    });
+
+    this.setData({
+      contentURL: requestURL + num
+    });
+
+    console.log(num, requestURL + num);
+
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  
+  onReady: function (opt) {
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    wx.hideLoading();
   },
 
   /**

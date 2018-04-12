@@ -1,5 +1,8 @@
 node_modules
 backend/node_modules
+bak
+backend/cert
+frontend/cert
 frontend/node_modules
 .idea
 server-log
